@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Event In Form </title> 
+	<script>
+		function myfunction()
+		{
+			var unitprice= parseFloat(document.myform.uprice.value) || 0;
+			var quantity= parseFloat(document.myform.quantity.value) || 0;
+			var discount= parseFloat(document.myform.discount.value) || 0;
+			var VAT= parseFloat(document.myform.vat.value) || 0;
+
+			var totalprice = unitprice*quantity;
+			var discountamount = totalprice*(discount/100);
+			var vat = totalprice * (VAT/100);
+			var subtotal = totalprice + vat - discountamount;
+
+
+			document.getElementById('Totalprice').innerHTML = totalprice.toFixed(2);
+			document.getElementById('Discountamount').innerHTML = discountamount.toFixed(2);
+			document.getElementById('VATtamount').innerHTML = vat.toFixed(2);
+			document.getElementById('Subtotal').innerHTML = subtotal.toFixed(2);
+
+
+		}
+	</script>
+	<style>
+		label{
+			display: inline-block;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			margin-left: 5px;
+			margin-right: 5px;
+			width: 150px;
+		}
+		.abc{
+
+		}
+	</style>
+</head>
+<body>
+
+	<form name="myform" class="abc">
+		<label>Unit Price: </label>
+		<input type="number" name="uprice" id="uprice" onkeyup="myfunction()"><br><br>
+
+		<label>Quantity: </label>
+		<input type="number" name="quantity" id="quantity" onkeyup="myfunction()" ><br><br>
+
+		<label>Discount (%):</label>
+		<input type="number" name="discount" id="discount" onkeyup="myfunction()"><br><br>
+
+		<label>VAT (%): </label>
+		<input type="number" name="vat" id="vat" onkeyup="myfunction()"><br><br>
+
+		<label><b>Total Price:</b></label>
+		<span id="Totalprice">0.00</span><br><br>
+
+		<label><b>Discount Amount:</b></label>
+		<span id="Discountamount">0.00</span><br><br>
+
+		<label><b>VAT Amount:</b></label>
+		<span id="VATtamount">0.00</span><br><br>
+
+		<label><b>Sub Total:</b></label>
+		<span id="Subtotal">0.00</span>
+		
+	</form>
+
+
+	
+
+</body>
+</html>
